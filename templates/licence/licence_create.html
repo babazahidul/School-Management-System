@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <div{% if message.tags %} class=" alert {{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<div class="container">
+    <div class="row">
+
+            <div class="col-md-6">
+                <div class="card">
+                <div class="card-header">Create a Licence: </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{ forms.as_p }}
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ forms.as_p }}
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+
+<!--            <div class="col-md-6">-->
+<!--                <form method="GET" action="" class="form-inline">-->
+<!--                    <input type="submit" value="Submit">-->
+<!--                </form>-->
+<!--            </div>-->
+    </div>
+</div>
+{% endblock %}

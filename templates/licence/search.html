@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <div{% if message.tags %} class=" alert {{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+
+{% if not data %}
+<div class="card">
+    <div class="card-header">Search Driver by Licence No.</div>
+    <div class="card-body">
+        <form action="" method="GET">
+            {{ forms.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+{% endif %}
+
+
+{% if licence_no %}
+     <div class="card">
+          <div class="card-header"><i class="fa fa-align-justify"></i>Licence Holder Info:</div>
+          <div class="card-body">
+             <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                <thead>
+                   <tr>
+                      <th>Name</th>
+                      <th>Licence No</th>
+                      <th>NID No</th>
+                      <th>Execution</th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                      <td>{{ licence_no.name}}</td>
+                      <td>{{ licence_no.nid }}</td>
+                      <td>{{ licence_no.l_num}}</td>
+                       <td><a href="" class="btn btn-primary"><i class="fa fa-edit"> Edit </i></a> <a href="" class="btn btn-danger"><i class="fa fa-trash"> Delete </i></a> </td>
+                   </tr>
+                </tbody>
+             </table>
+          </div>
+       </div>
+{% endif %}
+
+{% endblock %}

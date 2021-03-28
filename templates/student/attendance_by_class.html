@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Search Class </div>
+    <div class="card-body">
+        <form action="" method="GET" class="form-inline">
+            {{ forms.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% if students %}
+<div class="card">
+    <div class="card-header">Class {{ stu_class }}</div>
+    <div class="card-body">
+        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                <thead>
+                   <tr>
+                      <th>Roll No.</th>
+                      <th>Student Name</th>
+                      <th>Image</th>
+                      <th>Execution</th>
+                   </tr>
+                </thead>
+                <tbody>
+                {% for stu in students %}
+                   <tr>
+                      <td>{{ stu.student.name }}</td>
+                      <td>{{ stu.roll}}</td>
+                      <td><img width="60px" height="70" src="{{ stu.student.image.url}}" alt=""></td>
+                       <td><a href="{% url 'student-attendance' stu.stu_class stu.roll %}" class="btn btn-primary"><i class="fa fa-swoosh">Present</i></a> </td>
+                   </tr>
+                {% endfor %}
+                </tbody>
+             </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

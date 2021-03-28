@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="col-md-4 m-auto">
+    <div class="card">
+        <div class="card-header">Search which you like</div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ forms.as_p }}
+                <input type="submit" value="Submit" class="btn btn-primary pull-right">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if students %}
+        <div class="card">
+          <div class="card-header"><i class="fa fa-align-justify"></i>Student List:</div>
+          <div class="card-body">
+             <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                <thead>
+                   <tr>
+                      <th>Sl No.</th>
+                      <th>Student Name</th>
+                      <th>Father Name</th>
+                      <th>Roll</th>
+                      <th>Gender</th>
+                      <th>Class</th>
+                      <th>Image</th>
+                      <th>Execution</th>
+                   </tr>
+                </thead>
+                <tbody>
+                {% for student in students %}
+                   <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                   </tr>
+                {% endfor %}
+                </tbody>
+             </table>
+          </div>
+       </div>
+{% endif %}
+{% endblock %}

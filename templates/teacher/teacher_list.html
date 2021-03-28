@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="card">
+   <div class="card-header"><i class="fa fa-align-justify"></i> Combined All Table</div>
+   <div class="card-body">
+      <table class="table table-responsive-sm table-bordered table-striped table-sm">
+         <thead>
+            <tr>
+               <th>Sl No.</th>
+               <th>Teacher Name</th>
+               <th>Phone</th>
+               <th>Designation</th>
+               <th>Execution</th>
+            </tr>
+         </thead>
+         <tbody>
+         {% for teacher in teachers %}
+            <tr>
+               <td>{{ forloop.counter }}</td>
+               <td>{{ teacher.name}}</td>
+               <td>{{ teacher.phone}}</td>
+               <td>{{ teacher.designation}}</td>
+                <td><a href="{% url 'edit-teacher' teacher.id %}" class="btn btn-primary"><i class="fa fa-edit"> Edit </i></a> <a href="{% url 'del-teacher' teacher.id %}" class="btn btn-danger"><i class="fa fa-trash"> Delete </i></a> </td>
+            </tr>
+         {% endfor %}
+         </tbody>
+      </table>
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="card">
+       <div class="card-header"><i class="fa fa-align-justify"></i> Street Relation Student List:</div>
+       <div class="card-body">
+          <table class="table table-responsive-sm table-bordered table-striped table-sm">
+             <thead>
+                <tr>
+                   <th>Sl No.</th>
+                   <th>Student Name</th>
+                   <th>Father Name</th>
+                   <th>Roll</th>
+                   <th>Gender</th>
+                   <th>Class</th>
+                   <th>Image</th>
+                   <th>Execution</th>
+                </tr>
+             </thead>
+             <tbody>
+             {% for student in students %}
+                <tr>
+                   <td>{{ forloop.counter }}</td>
+                   <td>{{ student.name}}</td>
+                   <td>{{ student.father_name}}</td>
+                   <td>{{ student.roll}}</td>
+                   <td>{{ student.gender}}</td>
+                   <td>{{ student.studetailsinfo.stu_class}}</td>
+                   <td><img width="60px" height="70" src="{{ student.image.url }}" alt=""></td>
+                    <td><a href="{% url 'edit-student' student.id %}" class="btn btn-primary"><i class="fa fa-edit"> Edit </i></a> <a href="{% url 'del-student' student.id %}" class="btn btn-danger"><i class="fa fa-trash"> Delete </i></a> </td>
+                </tr>
+             {% endfor %}
+             </tbody>
+          </table>
+       </div>
+    </div>
+<br>
+<br>
+<br>
+   <div class="card">
+          <div class="card-header"><i class="fa fa-align-justify"></i> Reverse Relation Student List:</div>
+          <div class="card-body">
+             <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                <thead>
+                   <tr>
+                      <th>Sl No.</th>
+                      <th>Student Name</th>
+                      <th>Father Name</th>
+                      <th>Roll</th>
+                      <th>Gender</th>
+                      <th>Class</th>
+                      <th>Image</th>
+                      <th>Execution</th>
+                   </tr>
+                </thead>
+                <tbody>
+                {% for student in stu %}
+                   <tr>
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ student.student.name}}</td>
+                      <td>{{ student.student.father_name}}</td>
+                      <td>{{ student.student.roll}}</td>
+                      <td>{{ student.student.gender}}</td>
+                      <td>{{ student.stu_class.class_name}}</td>
+                      <td><img width="60px" height="70" src="{{ student.student.image.url }}" alt=""></td>
+                       <td><a href="{% url 'edit-student' student.id %}" class="btn btn-primary"><i class="fa fa-edit"> Edit </i></a> <a href="{% url 'del-student' student.id %}" class="btn btn-danger"><i class="fa fa-trash"> Delete </i></a> </td>
+                   </tr>
+                {% endfor %}
+                </tbody>
+             </table>
+          </div>
+       </div>
+{% endblock %}
