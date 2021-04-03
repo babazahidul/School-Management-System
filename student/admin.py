@@ -11,8 +11,13 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ['name', 'dob', 'image']
 
 
+class ResultAdmin(admin.ModelAdmin):
+    list_display = ['name', 'roll', 'board', 'gpa']
+
+
 admin.site.register(Student, StudentAdmin)
 admin.site.register(StuClassInfo)
 admin.site.register(StuShiftInfo)
 admin.site.register(Attendance)
 admin.site.register(StuDetailsInfo, StuDetailsInfoAdmin)
+admin.site.register(Result, ResultAdmin)

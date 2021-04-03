@@ -19,7 +19,7 @@ class Student(models.Model):
         (GENDER_OTHER, 'Other'),
     )
     gender = models.IntegerField(choices=gender_choice)
-    image = models.ImageField(upload_to='image/', null=False)
+    image = models.ImageField(upload_to='image/', null=True)
 
     def __str__(self):
         return self.name
@@ -74,3 +74,13 @@ class Attendance(models.Model):
 
     def __str__(self):
         return self.student.student.name
+
+
+class Result(models.Model):
+    name = models.CharField(max_length=200)
+    board = models.CharField(max_length=50)
+    roll = models.IntegerField()
+    gpa = models.FloatField()
+
+    def __str__(self):
+        return self.name
