@@ -49,7 +49,7 @@ class StuDetailsInfo(models.Model):
     stu_session = models.IntegerField()
 
     class Meta:
-        unique_together = ['roll', 'stu_class', 'stu_shift', 'stu_section', 'stu_session']
+        unique_together = ['roll', 'stu_class']
 
     def __str__(self):
         return self.student.name

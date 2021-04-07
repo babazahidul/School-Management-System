@@ -109,12 +109,12 @@ def stu_register(request):
 
 
 def student_list(request):
-    students_obj = Student.objects.all()
-    stu_obj = StuDetailsInfo.objects.order_by('-id')
+    # student_obj = Student.objects.all()
+    stu_obj = StuDetailsInfo.objects.select_related('student', 'stu_class').order_by('-id')
 
     context = {
-        'students': students_obj,
-        'stu': stu_obj,
+        # 'student': student_obj,
+        'student_details_obj': stu_obj,
     }
     return render(request, 'student/student_list.html', context)
 
